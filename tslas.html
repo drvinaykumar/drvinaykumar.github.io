@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
+<html><head>
     <title>TSLAS - Thapar School of Liberal Arts & Sciences</title>
     <style>
         body {
@@ -35,15 +33,43 @@
             gap: 20px;
         }
         .link-item {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
             border-radius: 15px;
             padding: 20px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+        
+        /* Different subtle colors for each button */
+        .link-item:nth-child(1) {
+            background: linear-gradient(135deg, #2d4a5a, #3e6b7a);
+        }
+        .link-item:nth-child(2) {
+            background: linear-gradient(135deg, #4a3d5a, #6b5a7a);
+        }
+        .link-item:nth-child(3) {
+            background: linear-gradient(135deg, #5a4a3d, #7a6b5a);
+        }
+        .link-item:nth-child(4) {
+            background: linear-gradient(135deg, #3d5a4a, #5a7a6b);
+        }
+        
         .link-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 188, 212, 0.3);
         }
+        
+        /* Different hover effects for each button */
+        .link-item:nth-child(1):hover {
+            box-shadow: 0 10px 25px rgba(61, 139, 168, 0.3);
+        }
+        .link-item:nth-child(2):hover {
+            box-shadow: 0 10px 25px rgba(139, 61, 168, 0.3);
+        }
+        .link-item:nth-child(3):hover {
+            box-shadow: 0 10px 25px rgba(168, 139, 61, 0.3);
+        }
+        .link-item:nth-child(4):hover {
+            box-shadow: 0 10px 25px rgba(61, 168, 139, 0.3);
+        }
+        
         .link-item a {
             text-decoration: none;
             color: #ffffff;
@@ -116,6 +142,5 @@
             <a href="profile.html">← Back to Profile</a>
         </div>
     </div>
-</body>
-</html>
+</body></html>
 
