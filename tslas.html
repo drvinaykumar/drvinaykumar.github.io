@@ -4,186 +4,277 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TSLAS - Thapar School of Liberal Arts & Sciences</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: #0a0a0a;
-            color: #ffffff;
-            font-family: sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
+        :root {
+            --bg: #050505;
+            --card: rgba(255, 255, 255, 0.035);
+            --card-hover: rgba(255, 255, 255, 0.07);
+            --border: rgba(255, 255, 255, 0.08);
+            --text: #f4f4f5;
+            --muted: #9a9aa2;
         }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 64px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 50% -10%, rgba(0, 188, 212, 0.12), transparent 45%),
+                var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
         .container {
+            width: 100%;
+            max-width: 620px;
+        }
+
+        /* ---------- Hero ---------- */
+        .hero {
             text-align: center;
-            max-width: 600px;
-            padding: 20px;
+            margin-bottom: 48px;
+        }
+        .kicker {
+            margin: 0 0 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--muted);
         }
         h1 {
-            color: #00BCD4;
-            margin-bottom: 30px;
-            font-size: 2.5em;
+            margin: 0 0 18px;
+            font-size: clamp(2.6rem, 9vw, 3.6rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            background: linear-gradient(120deg, #ffffff 0%, #00BCD4 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         .description {
-            margin-bottom: 40px;
-            font-size: 1.1em;
-            line-height: 1.6;
-            color: #cccccc;
+            max-width: 500px;
+            margin: 0 auto;
+            font-size: 1.02rem;
+            line-height: 1.65;
+            color: var(--muted);
         }
+
+        /* ---------- Links ---------- */
         .links-container {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 14px;
         }
         .link-item {
-            border-radius: 15px;
-            padding: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        /* Different subtle colors for each button */
-        .link-item:nth-child(1) {
-            background: linear-gradient(135deg, #2d4a5a, #3e6b7a);
-        }
-        .link-item:nth-child(2) {
-            background: linear-gradient(135deg, #4a3d5a, #6b5a7a);
-        }
-        .link-item:nth-child(3) {
-            background: linear-gradient(135deg, #5a4a3d, #7a6b5a);
-        }
-        .link-item:nth-child(4) {
-            background: linear-gradient(135deg, #3d5a4a, #5a7a6b);
-        }
-        .link-item:nth-child(5) {
-            background: linear-gradient(135deg, #5a3d4a, #7a5a6b);
-        }
-        .link-item:nth-child(6) {
-            background: linear-gradient(135deg, #3d4a5a, #5a6b7a);
-        }
-        .link-item:nth-child(7) {
-            background: linear-gradient(135deg, #4a5a3d, #6b7a5a);
-        }
-
-        .link-item:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Different hover effects for each button */
-        .link-item:nth-child(1):hover {
-            box-shadow: 0 10px 25px rgba(61, 139, 168, 0.3);
-        }
-        .link-item:nth-child(2):hover {
-            box-shadow: 0 10px 25px rgba(139, 61, 168, 0.3);
-        }
-        .link-item:nth-child(3):hover {
-            box-shadow: 0 10px 25px rgba(168, 139, 61, 0.3);
-        }
-        .link-item:nth-child(4):hover {
-            box-shadow: 0 10px 25px rgba(61, 168, 139, 0.3);
-        }
-        .link-item:nth-child(5):hover {
-            box-shadow: 0 10px 25px rgba(168, 61, 110, 0.3);
-        }
-        .link-item:nth-child(6):hover {
-            box-shadow: 0 10px 25px rgba(61, 110, 168, 0.3);
-        }
-        .link-item:nth-child(7):hover {
-            box-shadow: 0 10px 25px rgba(110, 168, 61, 0.3);
-        }
-
-        .link-item a {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 20px 22px;
+            text-align: left;
             text-decoration: none;
-            color: #ffffff;
-            display: block;
+            color: var(--text);
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: transform 0.25s ease, background 0.25s ease,
+                        border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .link-item::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            opacity: 0.5;
+            transition: opacity 0.25s ease, width 0.25s ease;
+        }
+        .link-item:hover {
+            transform: translateY(-4px);
+            background: var(--card-hover);
+            border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+            box-shadow: 0 14px 34px -10px color-mix(in srgb, var(--accent) 50%, transparent);
+        }
+        .link-item:hover::before {
+            opacity: 1;
+            width: 5px;
+        }
+        .dot {
+            flex-shrink: 0;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 14px var(--accent);
+        }
+        .link-body {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
         }
         .link-title {
-            font-size: 1.4em;
-            font-weight: bold;
-            margin-bottom: 8px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
         }
         .link-description {
-            font-size: 0.9em;
-            color: #cccccc;
+            font-size: 0.9rem;
+            line-height: 1.45;
+            color: var(--muted);
         }
+        .chevron {
+            flex-shrink: 0;
+            font-size: 1.25rem;
+            color: var(--accent);
+            opacity: 0.55;
+            transform: translateX(-4px);
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+        .link-item:hover .chevron {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        /* ---------- Back button ---------- */
         .back-button {
-            margin-top: 40px;
+            margin-top: 48px;
+            text-align: center;
         }
-        .back-button a {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: #4CAF50;
-            color: #ffffff;
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text);
             text-decoration: none;
-            border-radius: 25px;
-            transition: background-color 0.3s ease;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
         }
-        .back-button a:hover {
-            background-color: #45a049;
+        .back-link:hover {
+            background: var(--card-hover);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>TSLAS</h1>
-        <div class="description">
-            <p>Welcome to the Thapar School of Liberal Arts & Sciences (TSLAS) resource hub. Explore our various initiatives and projects below.</p>
+        <div class="hero">
+            <p class="kicker">Thapar School of Liberal Arts &amp; Sciences</p>
+            <h1>TSLAS</h1>
+            <p class="description">Welcome to the TSLAS resource hub. Explore our initiatives and projects below.</p>
         </div>
 
         <div class="links-container">
-            <div class="link-item">
-                <a href="https://drvinaykumar.github.io/tslas-foundation/" target="_blank">
-                    <div class="link-title">Foundation at TSLAS</div>
-                    <div class="link-description">Explore the foundational programs and initiatives at TSLAS</div>
-                </a>
-            </div>
+            <a class="link-item" href="https://drvinaykumar.github.io/PPP-CoE/" target="_blank" rel="noopener" style="--accent:#f43f5e">
+                <span class="dot"></span>
+                <span class="link-body">
+                    <span class="link-title">PPP-CoE</span>
+                    <span class="link-description">Centre of Excellence in Policy, Pedagogy &amp; Purpose &mdash; the flagship research institution of TSLAS</span>
+                </span>
+                <span class="chevron">&rarr;</span>
+            </a>
 
-            <div class="link-item">
-                <a href="https://drvinaykumar.github.io/DSAI-Triage/" target="_blank">
-                    <div class="link-title">DSAI-Triage</div>
-                    <div class="link-description">Data Science and AI Triage system for healthcare applications</div>
-                </a>
-            </div>
+            <a class="link-item" href="https://drvinaykumar.github.io/tslas-foundation/" target="_blank" rel="noopener" style="--accent:#00BCD4">
+                <span class="dot"></span>
+                <span class="link-body">
+                    <span class="link-title">Foundation at TSLAS</span>
+                    <span class="link-description">Explore the foundational programs and initiatives at TSLAS</span>
+                </span>
+                <span class="chevron">&rarr;</span>
+            </a>
 
-            <div class="link-item">
-                <a href="https://drvinaykumar.github.io/opengov2025/" target="_blank">
-                    <div class="link-title">OpenGov 2025</div>
-                    <div class="link-description">Open Government initiative for transparency and citizen engagement</div>
-                </a>
-            </div>
+            <a class="link-item" href="https://drvinaykumar.github.io/DSAI-Triage/" target="_blank" rel="noopener" style="--accent:#a78bfa">
+                <span class="dot"></span>
+                <span class="link-body">
+                    <span class="link-title">DSAI-Triage</span>
+                    <span class="link-description">Data Science and AI Triage system for healthcare applications</span>
+                </span>
+                <span class="chevron">&rarr;</span>
+            </a>
 
-            <div class="link-item">
-                <a href="https://iks.thapar.edu" target="_blank">
-                    <div class="link-title">Indian Knowledge System @ TSLAS</div>
-                    <div class="link-description">Preserving and promoting traditional Indian knowledge systems</div>
-                </a>
-            </div>
+            <a class="link-item" href="https://drvinaykumar.github.io/opengov2025/" target="_blank" rel="noopener" style="--accent:#fbbf24">
+                <span class="dot"></span>
+                <span class="link-body">
+                    <span class="link-title">OpenGov 2025</span>
+                    <span class="link-description">Open Government initiative for transparency and citizen engagement</span>
+                </span>
+                <span class="chevron">&rarr;</span>
+            </a>
 
-            <div class="link-item">
-                <a href="https://drvinaykumar.github.io/pravah2026/" target="_blank">
-                    <div class="link-title">Pravah 2026</div>
-                    <div class="link-description">Conversations in Liberal Arts & Sciences Leadership</div>
-                </a>
-            </div>
+            <a class="link-item" href="https://iks.thapar.edu" target="_blank" rel="noopener" style="--accent:#34d399">
+                <span class="dot"></span>
+                <span class="link-body">
+                    <span class="link-title">Indian Knowledge System @ TSLAS</span>
+                    <span class="link-description">Preserving and promoting traditional Indian knowledge systems</span>
+                </span>
+                <span class="chevron">&rarr;</span>
+            </a>
 
-            <div class="link-item">
-                <a href="https://drvinaykumar.github.io/sanskrit-study-beginner/" target="_blank">
-                    <div class="link-title">Sanskrit Beginner</div>
-                    <div class="link-description">Start from Here</div>
-                </a>
-            </div>
+            <a class="link-item" href="https://drvinaykumar.github.io/pravah2026/" target="_blank" rel="noopener" style="--accent:#f472b6">
+                <span class="dot"></span>
+                <span class="link-body">
+                    <span class="link-title">Pravah 2026</span>
+                    <span class="link-description">Conversations in Liberal Arts &amp; Sciences Leadership</span>
+                </span>
+                <span class="chevron">&rarr;</span>
+            </a>
 
-            <div class="link-item">
-                <a href="https://drvinaykumar.github.io/sanskrit-without-fear/" target="_blank">
-                    <div class="link-title">Jump to Sanskrit</div>
-                    <div class="link-description">36 week Course</div>
-                </a>
-            </div>
+            <a class="link-item" href="https://drvinaykumar.github.io/sanskrit-study-beginner/" target="_blank" rel="noopener" style="--accent:#60a5fa">
+                <span class="dot"></span>
+                <span class="link-body">
+                    <span class="link-title">Sanskrit Beginner</span>
+                    <span class="link-description">Start from Here</span>
+                </span>
+                <span class="chevron">&rarr;</span>
+            </a>
 
+            <a class="link-item" href="https://drvinaykumar.github.io/sanskrit-without-fear/" target="_blank" rel="noopener" style="--accent:#a3e635">
+                <span class="dot"></span>
+                <span class="link-body">
+                    <span class="link-title">Jump to Sanskrit</span>
+                    <span class="link-description">36 week Course</span>
+                </span>
+                <span class="chevron">&rarr;</span>
+            </a>
+
+            <a class="link-item" href="https://drvinaykumar.github.io/Digital-Humanities/" target="_blank" rel="noopener" style="--accent:#fb923c">
+                <span class="dot"></span>
+                <span class="link-body">
+                    <span class="link-title">Digital Humanities</span>
+                    <span class="link-description">Fourth-year elective exploring digital tools and methods in humanities scholarship</span>
+                </span>
+                <span class="chevron">&rarr;</span>
+            </a>
         </div>
 
         <div class="back-button">
-            <a href="profile.html">← Back to Profile</a>
+            <a class="back-link" href="profile.html">&larr; Back to Profile</a>
         </div>
     </div>
 </body>
